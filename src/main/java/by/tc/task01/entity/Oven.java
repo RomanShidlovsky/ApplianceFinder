@@ -16,15 +16,18 @@ public class Oven extends Appliance {
                 powerConsumption, weight, capacity, depth, height, width);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean satisfy(String key, Object value) {
         return switch (SearchCriteria.Oven.valueOf(key)) {
-            case POWER_CONSUMPTION -> powerConsumption == (Integer) value;
-            case WEIGHT -> weight == Double.parseDouble(String.valueOf(value));
-            case CAPACITY -> capacity == (Integer) value;
-            case DEPTH -> depth == Double.parseDouble(String.valueOf(value));
-            case HEIGHT -> height == Double.parseDouble(String.valueOf(value));
-            case WIDTH -> width == Double.parseDouble(String.valueOf(value));
+            case POWER_CONSUMPTION -> powerConsumption <= (Integer) value;
+            case WEIGHT -> weight <= Double.parseDouble(String.valueOf(value));
+            case CAPACITY -> capacity <= (Integer) value;
+            case DEPTH -> depth <= Double.parseDouble(String.valueOf(value));
+            case HEIGHT -> height <= Double.parseDouble(String.valueOf(value));
+            case WIDTH -> width <= Double.parseDouble(String.valueOf(value));
         };
     }
 }

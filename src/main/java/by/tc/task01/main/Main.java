@@ -10,7 +10,7 @@ import by.tc.task01.service.ServiceFactory;
 public class Main {
 
 	public static void main(String[] args) {
-		Appliance appliance;
+		Appliance[] appliance;
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		ApplianceService service = factory.getApplianceService();

@@ -17,15 +17,18 @@ public class VacuumCleaner extends Appliance{
 				powerConsumption, filterType.toString(), bagType, wandType, motorSpeedRegulation, cleaningWidth);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean satisfy(String key, Object value) {
 		return switch (SearchCriteria.VacuumCleaner.valueOf(key)) {
-			case POWER_CONSUMPTION -> powerConsumption == (Integer) value;
+			case POWER_CONSUMPTION -> powerConsumption <= (Integer) value;
 			case FILTER_TYPE -> filterType == FilterType.valueOf(String.valueOf(value));
 			case BAG_TYPE -> bagType.equals(value);
 			case WAND_TYPE -> wandType.equals(value);
-			case MOTOR_SPEED_REGULATION -> motorSpeedRegulation == (Integer) value;
-			case CLEANING_WIDTH -> cleaningWidth == (Integer) value;
+			case MOTOR_SPEED_REGULATION -> motorSpeedRegulation <= (Integer) value;
+			case CLEANING_WIDTH -> cleaningWidth <= (Integer) value;
 		};
 	}
 }

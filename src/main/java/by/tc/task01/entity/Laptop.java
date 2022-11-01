@@ -16,15 +16,18 @@ public class Laptop extends Appliance {
                 batteryCapacity, os, memoryRom, systemMemory, cpu, displayInches);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean satisfy(String key, Object value) {
         return switch (SearchCriteria.Laptop.valueOf(key)) {
-            case BATTERY_CAPACITY -> batteryCapacity == Double.parseDouble(String.valueOf(value));
+            case BATTERY_CAPACITY -> batteryCapacity <= Double.parseDouble(String.valueOf(value));
             case OS -> os.equals(value);
-            case MEMORY_ROM -> memoryRom == (Integer) value;
-            case SYSTEM_MEMORY -> systemMemory == (Integer) value;
-            case CPU -> cpu == Double.parseDouble(String.valueOf(value));
-            case DISPLAY_INCHES -> displayInches == (Integer) value;
+            case MEMORY_ROM -> memoryRom <= (Integer) value;
+            case SYSTEM_MEMORY -> systemMemory <= (Integer) value;
+            case CPU -> cpu <= Double.parseDouble(String.valueOf(value));
+            case DISPLAY_INCHES -> displayInches <= (Integer) value;
         };
     }
 }

@@ -16,13 +16,16 @@ public class TabletPC extends Appliance{
                 batteryCapacity, displayInches, memoryRom, flashMemoryCapacity, color.toString());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean satisfy(String key, Object value) {
         return switch (SearchCriteria.TabletPC.valueOf(key)) {
-            case BATTERY_CAPACITY -> batteryCapacity == (Integer) value;
-            case DISPLAY_INCHES -> displayInches == (Integer) value;
-            case MEMORY_ROM -> memoryRom == (Integer) value;
-            case FLASH_MEMORY_CAPACITY -> flashMemoryCapacity == (Integer) value;
+            case BATTERY_CAPACITY -> batteryCapacity <= (Integer) value;
+            case DISPLAY_INCHES -> displayInches <= (Integer) value;
+            case MEMORY_ROM -> memoryRom <= (Integer) value;
+            case FLASH_MEMORY_CAPACITY -> flashMemoryCapacity <= (Integer) value;
             case COLOR -> color == Color.valueOf(String.valueOf(value));
         };
     }

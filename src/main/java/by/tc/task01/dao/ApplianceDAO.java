@@ -10,7 +10,7 @@ public interface ApplianceDAO {
 	/**
 	 * Finds all appliances by given search criteria
 	 * @param criteria search criteria
-	 * @return
+	 * @return array of appliances that satisfy search criteria
 	 */
 	Appliance[] find(Criteria criteria);
 }

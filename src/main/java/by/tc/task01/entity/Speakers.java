@@ -14,13 +14,16 @@ public class Speakers extends Appliance{
                 powerConsumption, numberOfSpeakers, frequencyRange, cordLength);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean satisfy(String key, Object value) {
         return switch (SearchCriteria.Speakers.valueOf(key)) {
-            case POWER_CONSUMPTION -> powerConsumption == (Integer) value;
-            case NUMBER_OF_SPEAKERS -> numberOfSpeakers == (Integer) value;
+            case POWER_CONSUMPTION -> powerConsumption <= (Integer) value;
+            case NUMBER_OF_SPEAKERS -> numberOfSpeakers <= (Integer) value;
             case FREQUENCY_RANGE -> frequencyRange.equals(value);
-            case CORD_LENGTH -> cordLength == (Integer) value;
+            case CORD_LENGTH -> cordLength <= (Integer) value;
         };
     }
 }
