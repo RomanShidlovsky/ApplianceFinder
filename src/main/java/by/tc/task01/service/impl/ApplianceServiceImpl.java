@@ -10,7 +10,7 @@ import by.tc.task01.service.validation.Validator;
 public class ApplianceServiceImpl implements ApplianceService{
 
 	@Override
-	public Appliance find(Criteria criteria) {
+	public Appliance[] find(Criteria criteria) {
 		if (!Validator.criteriaValidator(criteria)) {
 			return null;
 		}
@@ -18,7 +18,7 @@ public class ApplianceServiceImpl implements ApplianceService{
 		DAOFactory factory = DAOFactory.getInstance();
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
 		
-		Appliance appliance = applianceDAO.find(criteria);
+		Appliance[] appliance = applianceDAO.find(criteria);
 		
 		// you may add your own code here
 		

@@ -5,6 +5,6 @@ import by.tc.task01.entity.criteria.Criteria;
 
 public interface ApplianceService {	
 	
-	Appliance find(Criteria criteria);
+	Appliance[] find(Criteria criteria);
 	
 }

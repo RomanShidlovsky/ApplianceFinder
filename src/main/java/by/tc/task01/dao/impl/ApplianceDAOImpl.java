@@ -7,16 +7,23 @@ import by.tc.task01.entity.criteria.Criteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Implementation of an appliance dao that reads
+ * information from xml file in resources folder
+ */
 public class ApplianceDAOImpl implements ApplianceDAO{
 	private static final String RESOURCES_APPLIANCES = "./src/main/resources/appliances_db.xml";
-	public Appliance find(Criteria criteria) {
+
+	/**
+	 * {@inheritDoc}
+ 	 */
+	public Appliance[] find(Criteria criteria) {
 		ArrayList<Appliance> result = new ArrayList<>();
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
@@ -55,7 +62,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 		}
 
 		if (result.size() != 0){
-			return result.get(0);
+			return result.toArray(new Appliance[0]);
 		} else {
 			return null;
 		}
