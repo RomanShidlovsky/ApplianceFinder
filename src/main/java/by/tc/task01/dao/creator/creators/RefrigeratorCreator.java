@@ -20,7 +20,7 @@ public class RefrigeratorCreator implements ApplianceCreator {
 
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                String value = nodes.item(i).getNodeValue();
+                String value = nodes.item(i).getTextContent();
                 switch (nodes.item(i).getNodeName()) {
                     case "powerConsumption" -> refrigerator.powerConsumption = Integer.parseInt(value);
                     case "weight" -> refrigerator.weight = Double.parseDouble(value);

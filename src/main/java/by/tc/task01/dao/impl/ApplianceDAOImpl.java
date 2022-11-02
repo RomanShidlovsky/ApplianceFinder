@@ -46,13 +46,13 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 						String key = entry.getKey();
 						Object value = entry.getValue();
 
-						if(!appliance.satisfy(key, value)) {
+						if (!appliance.satisfy(key, value)) {
 							isSatisfy = false;
 							break;
 						}
 					}
 
-					if(isSatisfy) {
+					if (isSatisfy) {
 						result.add(appliance);
 					}
 				}

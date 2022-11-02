@@ -20,7 +20,7 @@ public class LaptopCreator implements ApplianceCreator {
 
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                String value = nodes.item(i).getNodeValue();
+                String value = nodes.item(i).getTextContent();
                 switch (nodes.item(i).getNodeName()) {
                     case "batteryCapacity" -> laptop.batteryCapacity = Double.parseDouble(value);
                     case "os" -> laptop.os = value;

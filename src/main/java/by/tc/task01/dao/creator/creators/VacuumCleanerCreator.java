@@ -21,7 +21,7 @@ public class VacuumCleanerCreator implements ApplianceCreator {
 
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                String value = nodes.item(i).getNodeValue();
+                String value = nodes.item(i).getTextContent();
                 switch (nodes.item(i).getNodeName()) {
                     case "powerConsumption" -> vacuumCleaner.powerConsumption = Integer.parseInt(value);
                     case "filterType" -> vacuumCleaner.filterType = FilterType.valueOf(value.toUpperCase());
